@@ -1,16 +1,26 @@
-import cors from 'cors';
 import express, { Request, Response } from 'express';
+import cors from 'cors';
+import cookieSession from 'cookie-session';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
-const port: number = 8080;
-
+// Middleware konfigurieren
 app.use(cors());
+app.use(cookieSession({
+    name: 'session',
+    keys: [process.env.SESSION_KEY || 'default_key'],
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+app.use(morgan('dev'));
+app.use(express.json());
 
-app.get('/', (req:Request, res:Response) => {
-  res.send('Hello World!');
+// Routen definieren
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello, TypeScript with Express and Middleware!');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+export { app };
