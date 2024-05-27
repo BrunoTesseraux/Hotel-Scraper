@@ -5,13 +5,15 @@ import dotenv from 'dotenv';
 // Laden der Umgebungsvariablen aus der .env-Datei
 dotenv.config();
 
-
-
 // Funktion zum Starten des Servers
 const startServer = async (): Promise<void> => {
     try {
-        // Verbindung zu MongoDB herstellen
-        await mongoose.connect(process.env.MONGODB_URL as string);
+        // Verbindung zu MongoDB herstellen mit dbName Option
+        const dbOptions: mongoose.ConnectOptions = {
+            dbName: process.env.DB_NAME as string, // Den Datenbanknamen aus den Umgebungsvariablen laden
+        };
+
+        await mongoose.connect(process.env.MONGODB_URL as string, dbOptions);
 
         console.log('Connected to MongoDB');
 
