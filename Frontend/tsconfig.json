@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "target": "ES2020",  // Nutzt moderne JavaScript-Features.
+    "useDefineForClassFields": true,  // Verwendet die neueste Eigenschaftssemantik für Klassenfelder.
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],  // Fügt Typdefinitionen für ES2020 und DOM-APIs hinzu.
+    "module": "ESNext",  // Nutzt das neueste Modulformat.
+    "skipLibCheck": true,  // Überspringt die Typprüfung für Typdefinitionsdateien.
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "moduleResolution": "bundler",  // Verwendet die Modulauflösung, die für Bundler geeignet ist.
+    "allowImportingTsExtensions": true,  // Erlaubt den Import von .ts-Dateien mit Erweiterungen.
+    "resolveJsonModule": true,  // Erlaubt den Import von JSON-Dateien.
+    "isolatedModules": true,  // Erzwingt die Einzeldateiüberprüfung, nützlich für Tools wie Babel.
+    "noEmit": true,  // Verhindert die Ausgabe von JavaScript-Dateien, da dies vom Bundler übernommen wird.
+    "jsx": "react-jsx",  // Unterstützt JSX mit der neuen Transformationsart für React 17 und höher.
 
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": true,  // Aktiviert alle strikten Typüberprüfungen.
+    "noUnusedLocals": true,  // Warnt bei ungenutzten lokalen Variablen.
+    "noUnusedParameters": true,  // Warnt bei ungenutzten Parametern.
+    "noFallthroughCasesInSwitch": true  // Warnt bei fehlenden break-Anweisungen in switch-cases.
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],  // Schließt alle Dateien im src-Verzeichnis ein.
+  "references": [{ "path": "./tsconfig.node.json" }]  // Verweist auf eine weitere tsconfig-Datei, nützlich bei Monorepo-Strukturen.
 }
