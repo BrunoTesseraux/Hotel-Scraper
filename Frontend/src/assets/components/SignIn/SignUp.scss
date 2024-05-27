@@ -1,0 +1,20 @@
+.sign-in{
+    background-color: tomato;
+}
+.sign-up{
+    background-color: gold;
+}
+
+.sign-up,
+.sign-in{
+    width: 500px;
+    height: 500px;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    input{
+        margin-top: 20px;
+    }
+}
