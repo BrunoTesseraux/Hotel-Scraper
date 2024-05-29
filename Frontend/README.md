@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+Verkaufspunkte 
+Erspart täglich bis zu einer Stunde Arbeitszeit 
+Sie haben nicht nur die Daten sonder können sie auch sofort in verschiedn aufbereiteten Grafiken die Konkurrenz beobachten oder Vergleiche Ziehen 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Preisgestaltung 
+Einrichtungspreis: x (setupkosten für einrichtung des accounts) + y * Hotels 
+monatliches Abo: x * Hotels
 
-Currently, two official plugins are available:
+////////////////////////////////
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welche auswahlmöglichkeiten wollen wir bieten. 
 
-## Expanding the ESLint configuration
+reine daten für einezelne hotels als tabelle anzeigen / drucken können 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+daten als graph über das jahr visualisieren.
+möglichkeit alle hotels in einem grafen darzustellen (ermöglicht einfachen vergleich) 
 
-- Configure the top-level `parserOptions` property like this:
+alert wenn die konkurrenz einen erheblichen Preisanstieg hat (wie viele hotels hochgegangen sind und im wie viel € im verglech)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+////////////////////////////////
+
+Unwichtige Ideen 
+
+die seite optisch ein bisschen individuell gestaltbar machen (schriftart wechseln, farbe ändern) (übung um farben über html/js zu bestimmt und variablen in css verwenden) 
+
+////////////////////////////////
+
+Falls wirklch erfolgreich was mit dem geld machen 
+alles ausbezahlen oder einen teil / die ersten 25k auf ein "Firmenkonto" falls wir viele projekte ans land ziehen und ne gmbh aufmachen wollen weil wir leute brauchen die uns helfen 
+als kleingewerbe kann man zwar auch leute anstellen, ist dann aber mit seinem privatvermögen haftbar. also auch für sachen wie lohn und so. 
+da is gmbh absicherung schon nice 
+
