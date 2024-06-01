@@ -1,12 +1,16 @@
-import "./HotelCard.scss"
-import { Hotel, HotelData } from "../../../types";
+// HotelCard.tsx
+import React from 'react';
+import { Hotel } from '../../../types';
 
-const HotelCard: React.FC<{ hotel: Hotel }> = ({hotel}) => {
-    return (
-        <div className="hotel-card">
-            <button>Hotel {hotel.name}</button>
-        </div>
-    )
-}
+
+const HotelCard: React.FC<Hotel> = ({ id, name, hotelDataId }) => {
+  return (
+    <div className="hotel-card">
+      <h3>{name}</h3>
+      <p>Hotel ID: {id}</p>
+      <p>Hotel Data ID: {hotelDataId}</p>
+    </div>
+  );
+};
 
 export default HotelCard;

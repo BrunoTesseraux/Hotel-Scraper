@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import "./HotelSelector.scss"
-import { Hotel } from "../../../types";
+import { Hotel, HotelData } from "../../../types";
 import HotelCard from "./../HotelCard/HotelCard";
-
-
 
 const HotelSelector: React.FC = () => {
     //test usestate
@@ -34,50 +32,50 @@ const HotelSelector: React.FC = () => {
           "hotelDataId": "LL345"
         }
       ]);
-        // Test datensatz zur preisdarstellng
-    //   {
-    //     "_id": "60f8d5a2c2b5b814c8b7b44b",
-    //     "hotel": "60f8d5a2c2b5b814c8b7b44a",
-    //     "breakfastIncluded": true,
-    //     "stars": 4,
-    //     "prices": [
-    //       {
-    //         "currentPrice": 120,
-    //         "priceInOneMonth": 130,
-    //         "dateOfRequest": "2023-05-22T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 125,
-    //         "priceInOneMonth": 135,
-    //         "dateOfRequest": "2023-05-23T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 130,
-    //         "priceInOneMonth": 140,
-    //         "dateOfRequest": "2023-05-24T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 128,
-    //         "priceInOneMonth": 138,
-    //         "dateOfRequest": "2023-05-25T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 132,
-    //         "priceInOneMonth": 142,
-    //         "dateOfRequest": "2023-05-26T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 135,
-    //         "priceInOneMonth": 145,
-    //         "dateOfRequest": "2023-05-27T00:00:00Z"
-    //       },
-    //       {
-    //         "currentPrice": 140,
-    //         "priceInOneMonth": 150,
-    //         "dateOfRequest": "2023-05-28T00:00:00Z"
-    //       }
-    //     ]
-    //   }
+const [hotelData, setHotelData] = useState<HotelData[]>([
+      {
+        "_id": "60f8d5a2c2b5b814c8b7b44b",
+        "hotel": "Lakeside Lodge",
+        "breakfastIncluded": true,
+        "stars": 4,
+        "prices": [
+          {
+            "currentPrice": 120,
+            "priceInOneMonth": 130,
+            "dateOfRequest": "2023-05-22T00:00:00Z"
+          },
+          {
+            "currentPrice": 125,
+            "priceInOneMonth": 135,
+            "dateOfRequest": "2023-05-23T00:00:00Z"
+          },
+          {
+            "currentPrice": 130,
+            "priceInOneMonth": 140,
+            "dateOfRequest": "2023-05-24T00:00:00Z"
+          },
+          {
+            "currentPrice": 128,
+            "priceInOneMonth": 138,
+            "dateOfRequest": "2023-05-25T00:00:00Z"
+          },
+          {
+            "currentPrice": 132,
+            "priceInOneMonth": 142,
+            "dateOfRequest": "2023-05-26T00:00:00Z"
+          },
+          {
+            "currentPrice": 135,
+            "priceInOneMonth": 145,
+            "dateOfRequest": "2023-05-27T00:00:00Z"
+          },
+          {
+            "currentPrice": 140,
+            "priceInOneMonth": 150,
+            "dateOfRequest": "2023-05-28T00:00:00Z"
+          }
+        ]
+      }])
 
     useEffect(() => {
         const fetchHotels = async () => {
@@ -102,9 +100,33 @@ const HotelSelector: React.FC = () => {
             <h2>Hotel Selector</h2>
             <div className="hotel-cards">
                 {hotels.map(hotel => (
-                    <HotelCard key={hotel.id} hotel={hotel} />
+                    <HotelCard key={hotel.id}{...hotel}/>
                 ))}
             </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hotel</th>
+                        <th>Stars</th>
+                        <th>Prices</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {hotelData.map(data => (
+                        <tr key={data._id}>
+                            <td>{data.hotel}</td>
+                            <td>{data.stars}/5</td>
+                            <td>
+                                {data.prices.map(price => (
+                                    <div key={price.dateOfRequest}>
+                                        Date: {price.dateOfRequest}, Current Price: {price.currentPrice}, Price in One Month: {price.priceInOneMonth}
+                                    </div>
+                                ))}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }

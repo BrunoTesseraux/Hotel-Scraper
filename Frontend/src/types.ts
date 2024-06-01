@@ -7,13 +7,13 @@ export interface Hotel {
   
   export interface PriceData {
     currentPrice: number;
-    currentPriceDateOfRequest: string;
     priceInOneMonth: number;
-    priceInOneMonthDateOfRequest: string;
+    dateOfRequest: string;
   }
   
   export interface HotelData {
-    hotelId: string;
+    _id: string;
+    hotel: string;
     breakfastIncluded: boolean;
     stars: number;
     prices: PriceData[];
