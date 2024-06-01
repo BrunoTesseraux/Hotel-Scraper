@@ -12,8 +12,10 @@ Welche auswahlmöglichkeiten wollen wir bieten.
 
 reine daten für einezelne hotels als tabelle anzeigen / drucken können 
 
-daten als graph über das jahr visualisieren.
+daten als graph über einen selektierbaren zeitraum visualisieren.
 möglichkeit alle hotels in einem grafen darzustellen (ermöglicht einfachen vergleich) 
+
+diverse einstellungen, wie der graf angezeigt wird (Filterfunktionen)
 
 alert wenn die konkurrenz einen erheblichen Preisanstieg hat (wie viele hotels hochgegangen sind und im wie viel € im verglech)
 
@@ -26,7 +28,7 @@ die seite optisch ein bisschen individuell gestaltbar machen (schriftart wechsel
 
 ////////////////////////////////
 
-Falls wirklch erfolgreich was mit dem geld machen 
+Falls wirklch erfolgreich was mit dem geld machen?
 alles ausbezahlen oder einen teil / die ersten 25k auf ein "Firmenkonto" falls wir viele projekte ans land ziehen und ne gmbh aufmachen wollen weil wir leute brauchen die uns helfen 
 als kleingewerbe kann man zwar auch leute anstellen, ist dann aber mit seinem privatvermögen haftbar. also auch für sachen wie lohn und so. 
 da is gmbh absicherung schon nice 

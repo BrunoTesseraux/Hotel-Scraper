@@ -56,6 +56,7 @@ const SignIn: React.FC = () => {
         </div>
         <button type="submit">Sign In</button>
       </form>
+        <button><Link to="/hotelselector">Hotel selector</Link></button>
       <p>
         Dont have an account? <Link to="/signup">Sign up</Link>
       </p>
