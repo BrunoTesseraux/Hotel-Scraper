@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const ChartWithDropdown = () => {
+const ChartWithDropdown: React.FC = () => {
   // Initialisiere den Zustand der Farben
   const [colors, setColors] = useState<string[]>(['#3F51B5', '#9C27B0', '#E91E63', '#F44336', '#2196F3']);
 
