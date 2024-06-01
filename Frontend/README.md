@@ -18,6 +18,7 @@ möglichkeit alle hotels in einem grafen darzustellen (ermöglicht einfachen ver
 diverse einstellungen, wie der graf angezeigt wird (Filterfunktionen)
 
 alert wenn die konkurrenz einen erheblichen Preisanstieg hat (wie viele hotels hochgegangen sind und im wie viel € im verglech)
+!!Alert feld in Daten einfügen und funktionalität zur alerterstellung und zum versenden des alerts
 
 
 ////////////////////////////////
