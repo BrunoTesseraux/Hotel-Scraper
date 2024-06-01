@@ -1,5 +1,6 @@
 import './App.scss';
 import ChartTest from './assets/components/ChartTest/ChartTest';
+import ChartWithDropdown from './assets/components/ChartTest/ChartTestZwei';
 import Dropdown from './assets/components/Dropdown/Dropdown';
 import HotelSelector from './assets/components/HotelSelector/HotelSelector';
 import SignIn from './assets/components/SignIn/SignIn';
@@ -23,7 +24,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/hotelselector" element={<HotelSelector />} /> {/* Default route */}
           <Route path="/charttest" element={<ChartTest/>} /> {/* Default route */}
-          <Route path="/" element={<Dropdown initialValue="blue" options={dropdownOptions} onChange={(selectedValue) => console.log("Selected value:", selectedValue)} />} /> {/* Default route */}
+          <Route path="/" element={<ChartWithDropdown/>} /> {/* Default route */}
+          <Route path="/dropdown" element={<Dropdown initialValue="blue" options={dropdownOptions} onChange={(selectedValue) => console.log("Selected value:", selectedValue)} />} /> {/* Default route */}
         </Routes>
       </div>
     </Router>
