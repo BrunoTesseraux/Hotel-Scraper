@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ChartTest.scss";
 import { HotelData } from "../../../types";
 import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
 const ChartTest: React.FC = () => {
-  const [hotelData, setHotelData] = useState<HotelData[]>([
+  const [hotelData] = useState<HotelData[]>([
     {
       "_id": "60f8d5a2c2b5b814c8b7b44b",
       "hotel": "Lakeside Lodge",
@@ -107,9 +108,8 @@ const ChartTest: React.FC = () => {
 
   const currentPricesMountain = hotelData[1].prices.map(price => price.currentPrice);
   const pricesInOneMonthMountain = hotelData[1].prices.map(price => price.priceInOneMonth);
-  const datesMountain = hotelData[1].prices.map(price => new Date(price.dateOfRequest).toLocaleDateString());
 
-  const options = {
+  const options: ApexOptions = {
     chart: {
       type: 'line'
     },
