@@ -1,4 +1,19 @@
-.chart{
-    width: 500px;
-    margin: auto;
+.chart-container{
+    .chart{
+        width: 500px;
+        margin: auto;
+    }
+    .dropdowns {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      
+        .current-price-dropdowns, .price-in-one-month-dropdowns {
+          flex: 1;
+        }
+      
+        .current-price-dropdowns {
+          margin-right: 20px;
+        }
+      }
 }

@@ -52,7 +52,7 @@ const ChartTest: React.FC = () => {
     setColors(newColors);
   };
 
-  const seriesData: ApexOptions["series"] = hotelData.flatMap((hotel, hotelIndex) => [
+  const seriesData: ApexOptions["series"] = hotelData.flatMap((hotel) => [
     {
       name: `Current Price (${hotel.hotel})`,
       data: hotel.prices.map(price => price.currentPrice),
@@ -75,20 +75,25 @@ const ChartTest: React.FC = () => {
     { value: "#FFC107", label: "Amber" }
   ];
 
-  const dropdowns: JSX.Element[] = hotelData.flatMap((hotel, hotelIndex) => [
+  const currentPriceDropdowns: JSX.Element[] = hotelData.map((hotel, hotelIndex) => (
     <Dropdown
       key={`${hotel._id}-current`}
       initialValue={colors[hotelIndex * 2]}
+      label={`Select color for Current Price (${hotel.hotel})`}
       options={dropdownOptions}
       onChange={(selectedValue) => handleColorChange(selectedValue, hotelIndex * 2)}
-    />,
+    />
+  ));
+
+  const priceInOneMonthDropdowns: JSX.Element[] = hotelData.map((hotel, hotelIndex) => (
     <Dropdown
       key={`${hotel._id}-oneMonth`}
       initialValue={colors[hotelIndex * 2 + 1]}
+      label={`Select color for Price in One Month (${hotel.hotel})`}
       options={dropdownOptions}
       onChange={(selectedValue) => handleColorChange(selectedValue, hotelIndex * 2 + 1)}
     />
-  ]);
+  ));
 
   const dates: string[] = hotelData.length > 0 ? hotelData[0].prices.map(price => new Date(price.dateOfRequest).toLocaleDateString()) : [];
 
@@ -107,9 +112,14 @@ const ChartTest: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="chart-container">
       <div className="dropdowns">
-        {dropdowns}
+        <div className="current-price-dropdowns">
+          {currentPriceDropdowns}
+        </div>
+        <div className="price-in-one-month-dropdowns">
+          {priceInOneMonthDropdowns}
+        </div>
       </div>
       <div className="chart" id="chart">
         <ReactApexChart options={options} series={seriesData} height="350" />
