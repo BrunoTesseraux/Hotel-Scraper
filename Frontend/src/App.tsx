@@ -23,8 +23,8 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/hotelselector" element={<HotelSelector />} /> {/* Default route */}
-          <Route path="/charttest" element={<ChartTest/>} /> {/* Default route */}
-          <Route path="/" element={<ChartWithDropdown/>} /> {/* Default route */}
+          <Route path="/" element={<ChartTest/>} /> {/* Default route */}
+          <Route path="/chartwithdropdown" element={<ChartWithDropdown/>} /> {/* Default route */}
           <Route path="/dropdown" element={<Dropdown initialValue="blue" options={dropdownOptions} onChange={(selectedValue) => console.log("Selected value:", selectedValue)} />} /> {/* Default route */}
         </Routes>
       </div>
