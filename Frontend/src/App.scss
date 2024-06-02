@@ -1,7 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .app-container {
     display: flex;
+    background: linear-gradient(135deg, rgb(204, 226, 186), rgb(92, 90, 217));
     .main-content {
         flex: 1;
-        padding: 20px;
-      }
-  }
+    }
+}

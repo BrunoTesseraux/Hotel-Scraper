@@ -27,7 +27,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, initialValue, options, onCha
 
     return (
         <div className="dropdown-container">
-            <label htmlFor="dropdown" style={{backgroundColor : selectedValue}}>{label}</label>
+            <label htmlFor="dropdown">{label}</label>
             <select id="dropdown" value={selectedValue} onChange={handleValueChange} style={{ backgroundColor: selectedValue }}>
                 {options.map(option => (
                     <option key={option.value} value={option.value}>{option.label}</option>
