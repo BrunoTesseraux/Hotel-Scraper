@@ -1,64 +1,50 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
+import { CompanyDocument, CompanyModel } from "./intefaces/companyInter"; // assuming the interfaces file is named "interfaces.ts"
 
-const userSchema = new mongoose.Schema(
+// Definiere das Interface für Settings
+const companySchema = new Schema<CompanyDocument, CompanyModel>(
   {
-    firstname: { type: String, required: true },
-    lastname: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
+    company: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profession: { type: String },
-    avatar: { type: String },
-    qrcode: { type: String },
-    phonenumber: { type: Number },
-    bio: { type: String },
-    gender: { type: String, enum: ["male", "female", "divers"] },
-    birthday: { type: Date },
+    phonenumber: { type: Number, required: true },
     website: { type: String },
+    observerdHotels: { type: Map, of: String, default: {} },
+    settings: {
+      darkMode: { type: Boolean, default: false },
+      hotelColors: { type: Map, of: String, default: {} },
+      viewInDashboard: { type: String, default: "" },
+    },
+    createdAt: { type: Date, required: true, default: Date.now },
+    updatedAt: { type: Date, required: true, default: Date.now },
     sixDigitCode: {
       type: String,
       default: () => Math.random().toString().slice(2, 8),
     },
-    // Remove the duplicate property "profession"
-    emailVerified: { type: Boolean, default: false },
-    blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
-    saved: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
-    following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    activities: [{ type: mongoose.Schema.Types.ObjectId, ref: "Activity" }],
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now },
   },
-  { collection: "users" }
+  { collection: "company" }
 );
 
-userSchema.methods.toProfileInfo = function () {
+companySchema.methods.toProfileInfo = function () {
   return {
-    firstname: this.firstname,
-    lastname: this.lastname,
     username: this.username,
     email: this.email,
-    profession: this.profession,
-    avatar: this.avatar,
-    qrcode: this.qrcode,
-    bio: this.bio,
-    birthday: this.birthday,
+    company: this.company,
+    Idqrcode: this.qrcode,
     phonenumber: this.phonenumber,
-    likes: this.likes,
-    saved: this.saved,
     website: this.website,
-    gender: this.gender,
-    followers: this.followers,
-    following: this.following,
-    blogs: this.blogs,
     _id: this._id,
-    emailVerified: this.emailVerified,
+    observerdHotels: this.observerdHotels,
+    settings: this.settings,
+    createdAt: this.createdAt,
+    updatedAt: this.updatedAt,
+    sixDigitCode: this.sixDigitCode,
   };
 };
 
-userSchema.pre("save", async function () {
+companySchema.pre<CompanyDocument>("save", async function () {
   const user = this;
 
   if (user.isModified("email")) {
@@ -70,10 +56,10 @@ userSchema.pre("save", async function () {
   }
 });
 
-userSchema.statics.findByEmail = function (email) {
+companySchema.statics.findByEmail = function (email: string) {
   if (typeof email !== "string") return null;
   return this.findOne({ email: email.toLowerCase() });
 };
 
-const User = mongoose.model("User", userSchema);
-export default User;
+const Company = mongoose.model<CompanyDocument, CompanyModel>("Company", companySchema);
+export default Company;
