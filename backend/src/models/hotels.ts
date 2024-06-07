@@ -1,30 +1,46 @@
 import mongoose from "mongoose";
- 
 
-interface Hotel {
-    name: string;
-    stars: number;
-    breakfastIncluded: boolean; 
-    pricePerNight: number;
-    pricePerNightFuture: number;
+// TypeScript Interfaces
+interface PricePerNight {
+  typ: string;
+  price: string;
+  date: Date;
 }
 
-const exampleHotel: Hotel = {
-    name: "Hotel Beispiel",
-    stars: 4,
-    breakfastIncluded: true,
-    pricePerNight: 120.50,
-    pricePerNightFuture: 80.50
-};
+interface PricePerNightFuture {
+  typ: string;
+  price: string;
+  date: Date;
+}
+
+interface Hotel {
+  name: string;
+  stars: string;
+  roomTypes: string[];
+  breakfastIncluded: boolean; 
+  pricePerNight: PricePerNight[];
+  pricePerNightFuture: PricePerNightFuture[];
+}
+
+// Mongoose Schema Definition
+const pricePerNightSchema = new mongoose.Schema({
+  typ: { type: String, required: true },
+  price: { type: String, required: true },
+  date: { type: Date, required: true }
+});
 
 const hotelSchema = new mongoose.Schema({
-  name: {type: 'string',required: true},
-  stars: {type: 'number',required: true},
-  breakfastIncluded: {type: 'boolean',required: true},
-  pricePerNight: {type: 'number',required: true},
-  pricePerNightFuture: {type: 'number',required: true},
-},
-{collection:"HOTELS"}
-);
+  name: { type: String, required: true },
+  stars: { type: String, required: true },
+  roomTypes: { type: Map, required: true },
+  breakfastIncluded: { type: Boolean, required: true },
+  pricePerNight: { type: [pricePerNightSchema], required: true },
+  pricePerNightFuture: { type: [pricePerNightSchema], required: true }
+}, 
+{
+  collection: "HOTELS"
+});
 
-console.log(exampleHotel);
+// Exporting the Model
+const HotelModel = mongoose.model<Hotel>('Hotel', hotelSchema);
+export default HotelModel;
