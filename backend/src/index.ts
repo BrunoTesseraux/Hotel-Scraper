@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 import dotenv from 'dotenv';
-import {  scrapeHtml, scrapeOptions } from './puTest';
-import { scrapeElement, scrapeOptionsElement } from './service/scraper/baseScraper';
+
 
 // Laden der Umgebungsvariablen aus der .env-Datei
 dotenv.config();
@@ -29,14 +28,6 @@ const startServer = async (): Promise<void>=> {
         process.exit(1);
     }
 };
-
-// scrapeHtml(scrapeOptions).then(() => console.log('Scraping completed.'));
-
-// scrapeElement(scrapeOptionsElement).then(data => console.log(data));
-
-
-
-
 
     startServer();
 

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from 'mongoose';
 
 // TypeScript Interfaces
 interface PricePerNight {
@@ -7,19 +7,13 @@ interface PricePerNight {
   date: Date;
 }
 
-interface PricePerNightFuture {
-  typ: string;
-  price: string;
-  date: Date;
-}
-
-interface Hotel {
+interface Hotel extends Document {
   name: string;
   stars: string;
   roomTypes: string[];
   breakfastIncluded: boolean; 
   pricePerNight: PricePerNight[];
-  pricePerNightFuture: PricePerNightFuture[];
+  pricePerNightFuture: PricePerNight[];
 }
 
 // Mongoose Schema Definition
@@ -32,7 +26,7 @@ const pricePerNightSchema = new mongoose.Schema({
 const hotelSchema = new mongoose.Schema({
   name: { type: String, required: true },
   stars: { type: String, required: true },
-  roomTypes: { type: Map, required: true },
+  roomTypes: { type: [String], required: true },
   breakfastIncluded: { type: Boolean, required: true },
   pricePerNight: { type: [pricePerNightSchema], required: true },
   pricePerNightFuture: { type: [pricePerNightSchema], required: true }
