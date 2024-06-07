@@ -1,12 +1,8 @@
-import { startScraping } from '../../controller/scraper/scraperCtrl';
 import express from 'express';
-import { Router } from 'express';
+import { ScraperController } from '../../controller';
 
 const ScrapeRouter = express
 .Router()
-.post('/scrape/indigo', startScraping)
-
-
-
+.get('/includio', ScraperController.scrapeIncludioCtrl.scrape);
 
 export default ScrapeRouter;
