@@ -5,7 +5,7 @@
     .background{
         height: 50vh;
         width: 150%;
-        background-color: pink;
+        background: linear-gradient(65deg, rgba(138,100,244,1) 0%, rgba(36,183,252,1) 18%, rgba(67,250,145,1) 44%, rgba(247,239,103,1) 72%, rgba(247,103,103,1) 100%);;
         z-index: 0;
         transform: rotate(-7deg);   
         position: absolute;
@@ -17,10 +17,66 @@
         width: 50%;
         height: 50vh;
         margin-top: 25vh;
-        background-color: gold;
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.47);
         z-index: 1;
         left: 50%;
-        transform: translateX(-50%);
         text-align: center;
+        transform: translateX(-50%);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.234);
+        &:hover{
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.374);
+        }
+        h2,
+        p{
+            padding: 5px;
+        }
+        h2{
+            margin-top: 40px;
+            font-size: 3rem;
+        }
+        p{
+            font-size: 1rem;
+            color: grey;
+            margin-bottom: 40px;
+        }
+        .input-wrapper {
+            background-color: white;
+            width: 600px;
+            margin-inline: auto;
+            border: 1px solid black;
+            margin-top: 10px;
+            label,
+            input {
+                display: block;
+                width: 100%;
+                border: none;
+                background: none;
+                padding: 10px;
+                color: grey;
+            }
+            label {
+                font-size: 0.7rem;
+            }
+            input {
+                text-align: center;
+                transition: 0.5s;
+                &:focus {
+                    outline: none;
+                    transform: scale(1.2); 
+                }
+            }
+        }
+        button{
+            width: 400px;
+            margin-top: 20px;
+            height: 60px;
+            background: black;
+            color: white;
+            font-size: 1.3rem;
+            display: block;
+            margin-inline: auto;
+            cursor: pointer;
+        }
     }
 }

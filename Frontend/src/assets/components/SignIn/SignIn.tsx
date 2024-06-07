@@ -37,30 +37,33 @@ const SignIn: React.FC<SignInProps> = ({ onLogin }) => {
     <div className="sign-in">
       <div className="background"></div>
       <form onSubmit={handleSubmit}>
-        <h2>Sign In</h2>
-        <div>
+        <h2>Log in to Scrapy</h2>
+        <p>The easyest solution for price comparison</p>
+        <div className='input-wrapper'>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
+            placeholder='john@doe.com'
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
+        <div className='input-wrapper'>
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
+            placeholder='*********'
             value={formData.password}
             onChange={handleChange}
             required
           />
         </div>
-        <button type="submit">Sign In</button>
+        <button type="submit">Proceed</button>
       </form>
     </div>
   );
