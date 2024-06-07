@@ -3,6 +3,64 @@
     height: 100vh;
     background-color: rgba(124, 124, 124, 0.504);
     border-radius: 50px;
-    padding: 20px;
-
+    padding: 40px;
+    .links{
+      height: 20%;
+      display: flex;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      flex-direction: column;
+      margin-top: 50px;
+      a{
+        text-decoration: none;
+        color: inherit;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 50px;
+        transition: 0.5s;
+        img{
+          display: inline;
+        }
+        &:hover{
+          background-color: tomato;
+          border-radius: 50px;
+        }
+      }
+    }
+    .profile{
+      text-align: center;
+      img{
+        border-radius: 50%;
+        margin: 10px;
+      }
+    }
+    h1{
+      font-family: "roboto-bold";
+    }
+    h2{
+      font-family: "roboto-bold";
+    }
+    ul{
+      list-style: none;
+    }
+    button{
+      text-align: center;
+      width: 100%;
+      background-color: rgb(181, 76, 76);
+      border-radius: 50px;
+      border: none;
+      padding: 5px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      cursor: pointer;
+      img{
+        display: inline;
+        width: 24px;
+      }
+    }
   }
