@@ -1,12 +1,14 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 import dotenv from 'dotenv';
+import {  scrapeHtml, scrapeOptions } from './puTest';
+import { scrapeElement, scrapeOptionsElement } from './service/scraper/baseScraper';
 
 // Laden der Umgebungsvariablen aus der .env-Datei
 dotenv.config();
 
 // Funktion zum Starten des Servers
-const startServer = async (): Promise<void> => {
+const startServer = async (): Promise<void>=> {
     try {
         // Verbindung zu MongoDB herstellen mit dbName Option
         const dbOptions: mongoose.ConnectOptions = {
@@ -28,5 +30,14 @@ const startServer = async (): Promise<void> => {
     }
 };
 
-// Server starten
-startServer();
+// scrapeHtml(scrapeOptions).then(() => console.log('Scraping completed.'));
+
+// scrapeElement(scrapeOptionsElement).then(data => console.log(data));
+
+
+
+
+
+    startServer();
+
+
