@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
 import './SignUp.scss';
 
 interface SignInProps {
@@ -36,6 +35,7 @@ const SignIn: React.FC<SignInProps> = ({ onLogin }) => {
 
   return (
     <div className="sign-in">
+      <div className="background"></div>
       <form onSubmit={handleSubmit}>
         <h2>Sign In</h2>
         <div>
@@ -62,7 +62,6 @@ const SignIn: React.FC<SignInProps> = ({ onLogin }) => {
         </div>
         <button type="submit">Sign In</button>
       </form>
-      <button><Link to="/hotelselector">Hotel selector</Link></button>
     </div>
   );
 };
