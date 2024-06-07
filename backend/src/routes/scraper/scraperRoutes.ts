@@ -3,6 +3,6 @@ import { ScraperController } from '../../controller';
 
 const ScrapeRouter = express
 .Router()
-.get('/includio', ScraperController.scrapeIncludioCtrl.scrape);
+.post('/includio', ScraperController.scrapeIncludioCtrl.scrape);
 
 export default ScrapeRouter;

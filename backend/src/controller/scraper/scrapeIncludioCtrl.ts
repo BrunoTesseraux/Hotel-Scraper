@@ -1,23 +1,30 @@
 import { Request, Response } from 'express';
 import { ScraperService } from '../../service/index';
+import HotelModel from '../../models/Hotel';
 
 export const scrapeIncludioCtrl = {
     async scrape(req: Request, res: Response) {
-
         try {
-            const hotelDetails = {
-                name: req.body.name,
-                stars: req.body.stars,
-                roomTypes: req.body.roomTypes,
-                breakfastIncluded: req.body.breakfastIncluded
-            };
-            console.log(hotelDetails);
-            // Rufe die Methode scrapeAndSave direkt aus dem ScraperService auf
-            const savedData = await ScraperService.getIncludio.scrapeAndSave(hotelDetails);
-            res.json({ data: savedData });
+            // Scrape data from the service
+            const hotelData = await ScraperService.getIncludio.scrapeAndReturn();
+
+            // Fill additional details as needed
+            hotelData.name = req.body.name || "Default Hotel Name";
+            hotelData.stars = req.body.stars || "Default Stars";
+            hotelData.roomTypes = req.body.roomTypes || ["Default Room Type"];
+            hotelData.breakfastIncluded = req.body.breakfastIncluded || false;
+
+            console.log("Hotel-Details", hotelData);
+
+            // Save to database
+            const hotel = new HotelModel(hotelData);
+            await hotel.save();
+
+            res.json({ data: hotel });
         } catch (error) {
-            // console.error(error); @BrunoTesseraux @NikolaSretko log für debugging
-            res.status(500).json({ error: 'Fehler beim Scrapen der Website' });
+            const typedError = error as Error;
+            console.error('Fehler beim Scrapen der Website:', typedError);
+            res.status(500).json({ error: 'Fehler beim Scrapen der Website', details: typedError.message });
         }
     }
 };
