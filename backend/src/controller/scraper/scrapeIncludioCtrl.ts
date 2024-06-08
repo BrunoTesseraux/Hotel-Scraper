@@ -1,26 +1,27 @@
 import { Request, Response } from 'express';
 import { ScraperService } from '../../service/index';
-import HotelModel from '../../models/Hotel';
 
 export const scrapeIncludioCtrl = {
     async scrape(req: Request, res: Response) {
         try {
             // Scrape data from the service
-            const hotelData = await ScraperService.getIncludio.scrapeAndReturn();
+            const scrapedHotelData = await ScraperService.getIncludio.scrapeAndReturn();
 
             // Fill additional details as needed
-            hotelData.name = req.body.name || "Default Hotel Name";
-            hotelData.stars = req.body.stars || "Default Stars";
-            hotelData.roomTypes = req.body.roomTypes || ["Default Room Type"];
-            hotelData.breakfastIncluded = req.body.breakfastIncluded || false;
+            const hotelData = {
+                ...scrapedHotelData,
+                name: req.body.name || "Default Hotel Name",
+                stars: req.body.stars || "Default Stars",
+                roomTypes: req.body.roomTypes || ["Default Room Type"],
+                breakfastIncluded: req.body.breakfastIncluded || false
+            };
 
             console.log("Hotel-Details", hotelData);
 
             // Save to database
-            const hotel = new HotelModel(hotelData);
-            await hotel.save();
+            const savedHotel = await ScraperService.postIncludio.post(hotelData);
 
-            res.json({ data: hotel });
+            res.json({ data: savedHotel });
         } catch (error) {
             const typedError = error as Error;
             console.error('Fehler beim Scrapen der Website:', typedError);

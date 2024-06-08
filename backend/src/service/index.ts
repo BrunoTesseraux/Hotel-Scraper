@@ -1,6 +1,7 @@
-import { getIncludio } from "./scraper/getIncludio";
+import { getIncludio } from "./scraper/includio/getIncludio";
+import { postIncludio } from "./scraper/includio/postIncludio";
 
 export const ScraperService = {
-  getIncludio
-
+  getIncludio,
+  postIncludio
 }
