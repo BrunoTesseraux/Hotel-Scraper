@@ -5,10 +5,9 @@ import { HotelDetails } from './icludioInterfaces';
 export const postIncludio = {
     async post(hotelData: HotelDetails): Promise<HotelDetails> {
         try {
-            // Direktes Erstellen und Speichern des Hotels
             const hotel = new HotelModel(hotelData);
             const savedHotel = await hotel.save();
-            return savedHotel as unknown as HotelDetails;
+            return savedHotel.toObject() as HotelDetails; // Verwendung von toObject für die Typisierung
         } catch (error) {
             const typedError = error as Error;
             console.error('Fehler beim Speichern der Daten in der Datenbank:', typedError);
