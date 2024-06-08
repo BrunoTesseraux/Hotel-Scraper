@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import ScrapeRouter from './routes/scraper/scraperRoutes';
+import scheduleScraping from './scheduler';
 
 dotenv.config();
 
@@ -19,6 +20,9 @@ app.use(cookieSession({
 }));
 app.use(morgan('dev'));
 app.use(express.json());
+
+// Cron-Jobs planen
+scheduleScraping();
 
 // Routen definieren
 
