@@ -1,11 +1,14 @@
 // src/scheduler.ts
 import cron from 'node-cron';
-import { ScraperService } from './service';
-import {HotelDetails} from './service/scraper/includio/icludioInterfaces';
+import { ScraperService } from '../../service';
 
-const scheduleScraping = () => {
 
-    const times = ['0 4 * * *', '0 18 * * *'];
+/**
+ * Scrapes hotel data from the Includio service at specified times and saves it to the database.
+ */
+const includio = () => {
+
+    const times = ['0 5 * * *', '0 18 * * *'];
 
     times.forEach(time => {
         cron.schedule(time, async () => {
@@ -16,12 +19,12 @@ const scheduleScraping = () => {
                 const scrapedHotelData = await ScraperService.getIncludio.scrapeAndReturn();
 
                 // Fill additional details as needed
-                const hotelData: HotelDetails = {
-                    ...scrapedHotelData,
-                    name: "Automated Scrape",
-                    stars: "Automated Stars",
-                    roomTypes: ["Automated Room Type"],
-                    breakfastIncluded: true
+                const hotelData = {
+                ...scrapedHotelData,
+                name:"Includio",
+                stars: "4",
+                roomTypes: ["DOPPELZIMMER COMFORT PLUS", "DOPPELZIMMER COMFORT TYP A", "DOPPELZIMMER COMFORT TYP B","FAMILIENZIMMER",],
+                breakfastIncluded: true
                 };
 
                 console.log("Automated Hotel-Details", hotelData);
@@ -38,4 +41,4 @@ const scheduleScraping = () => {
     });
 };
 
-export default scheduleScraping;
+export default includio;

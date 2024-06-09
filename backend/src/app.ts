@@ -1,11 +1,10 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import puppeteer from 'puppeteer';
 import ScrapeRouter from './routes/scraper/scraperRoutes';
-import scheduleScraping from './scheduler';
+import autoScrape from './auto/index';
 
 dotenv.config();
 
@@ -21,15 +20,10 @@ app.use(cookieSession({
 app.use(morgan('dev'));
 app.use(express.json());
 
-// Cron-Jobs planen
-scheduleScraping();
+// Automatischdes Scrapen
+autoScrape.regensburg.includio();
 
 // Routen definieren
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript with Express and Middleware!');
-});
-
 app.use('/api/scrape', ScrapeRouter);
 
 

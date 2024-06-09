@@ -1,22 +1,28 @@
 import { Request, Response } from 'express';
 import { ScraperService } from '../../service/index';
 
+/**
+ * Controller function to scrape data from the Includio service and save it to the database.
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @returns {Promise<void>} - A Promise that resolves when the scraping and saving is complete.
+ */
 export const scrapeIncludioCtrl = {
-    async scrape(req: Request, res: Response) {
+    async scrape(_:Request, res: Response) {
         try {
-            // Scrape data from the service
+            // Scrape data from the services
             const scrapedHotelData = await ScraperService.getIncludio.scrapeAndReturn();
 
             // Fill additional details as needed
             const hotelData = {
                 ...scrapedHotelData,
-                name: req.body.name || "Default Hotel Name",
-                stars: req.body.stars || "Default Stars",
-                roomTypes: req.body.roomTypes || ["Default Room Type"],
-                breakfastIncluded: req.body.breakfastIncluded || false
+                name:"Includio",
+                stars: "4",
+                roomTypes: ["DOPPELZIMMER COMFORT PLUS", "Room DOPPELZIMMER COMFORT TYP A", "DOPPELZIMMER COMFORT TYP B","FAMILIENZIMMER",],
+                breakfastIncluded: true
             };
 
-            console.log("Hotel-Details", hotelData);
+            console.log("Hotel-Details", scrapedHotelData);
 
             // Save to database
             const savedHotel = await ScraperService.postIncludio.post(hotelData);
