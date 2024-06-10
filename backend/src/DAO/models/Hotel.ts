@@ -15,11 +15,9 @@ const pricePerNightSchema = new mongoose.Schema({
  */
 const hotelSchema = new mongoose.Schema({
   name: { type: String, required: true ,index: true},
-  stars: { type: String, required: true },
   roomTypes: { type: [String], required: true },
-  breakfastIncluded: { type: Boolean, required: true },
+  // breakfastIncluded: { type: Boolean, required: true },
   pricePerNight: { type: [pricePerNightSchema], required: true },
-  pricePerNightFuture: { type: [pricePerNightSchema], required: true }
 }, 
 {
   collection: "HOTELS"

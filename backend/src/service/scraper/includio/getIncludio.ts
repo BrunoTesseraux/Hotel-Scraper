@@ -37,7 +37,6 @@ export const getIncludio = {
                 pricePerNight: processedPrices,
                 pricePerNightFuture: []
             };
-            console.log('Scraped hotel data:', hotelData);
             
             return hotelData;
         } catch (error) {
