@@ -14,7 +14,7 @@ export const getIncludio = {
         const url = utils.generateUrl();
 
         try {
-            const browser = await puppeteer.launch({ headless: true });
+            const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox']});
             const page = await browser.newPage();
             await page.goto(url, { waitUntil: 'networkidle2' });
 
@@ -37,7 +37,8 @@ export const getIncludio = {
                 pricePerNight: processedPrices,
                 pricePerNightFuture: []
             };
-
+            console.log('Scraped hotel data:', hotelData);
+            
             return hotelData;
         } catch (error) {
             const typedError = error as Error;

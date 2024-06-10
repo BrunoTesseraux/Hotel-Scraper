@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 interface PricePerNight {
   typ: string;
+  size: string;
   price: string;
   date: Date;
 }

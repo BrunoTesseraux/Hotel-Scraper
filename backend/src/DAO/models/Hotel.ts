@@ -5,6 +5,7 @@ import { Hotel } from '../intefaces/companyInter';
 // Mongoose Schema Definition
 const pricePerNightSchema = new mongoose.Schema({
   typ: { type: String, required: true },
+  size: { type: String, required: true },
   price: { type: String, required: true },
   date: { type: Date, required: true }
 });

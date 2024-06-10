@@ -14,7 +14,7 @@ import { includioConfig } from '../../DAO/additionalDataConfig';
 
 const includio = () => {
 
-    const times = ['0 15 * * *', '0 20 * * *'];
+    const times = ['39 16 * * *', '0 16 * * *'];
 
     times.forEach(time => {
         cron.schedule(time, async () => {
@@ -23,17 +23,16 @@ const includio = () => {
 
                 // Scrape data from the service
                 const scrapedHotelData = await ScraperService.getIncludio.scrapeAndReturn();
-
                 // Fill additional details as needed
                 const hotelData = {
                 ...scrapedHotelData,
                 ...includioConfig
                 };
-
+                
                 // Save to database via the service
                 const savedHotel = await ScraperService.postIncludio.post(hotelData);
-
-                console.log(`Hotel data saved: ${savedHotel.pricePerNight}`);
+                console.log('Saved hotel data:', savedHotel);
+                
             } catch (error) {
                 const typedError = error as Error;
                 console.error('Fehler beim automatisierten Scrapen der Website:', typedError);

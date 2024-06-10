@@ -14,19 +14,18 @@ export const scrapeIncludioCtrl = {
         try {
             // Scrape data from the services
             const scrapedHotelData = await ScraperService.getIncludio.scrapeAndReturn();
-
+            
             // Fill additional details as needed
             const hotelData = {
                 ...scrapedHotelData,
                 ...includioConfig
             };
 
-            console.log("Hotel-Details", scrapedHotelData);
+            console.log("/CTRL/ Hotel-Details", scrapedHotelData);
 
             // Save to database
             const savedHotel = await ScraperService.postIncludio.post(hotelData);
-
-            res.json({ data: savedHotel });
+            res.json({ success: true, savedHotel });
         } catch (error) {
             const typedError = error as Error;
             console.error('Fehler beim Scrapen der Website:', typedError);
