@@ -1,5 +1,5 @@
 // src/service/includio/postIncludio.ts
-import HotelModel from '../../../models/Hotel';
+import HotelModel from '../../../DAO/models/Hotel';
 import { HotelDetails } from './includioInterfaces';
 
 /**
@@ -8,6 +8,7 @@ import { HotelDetails } from './includioInterfaces';
  * @returns {Promise<HotelDetails>} - The saved hotel data.
  * @throws {Error} - If there is an error while saving the data to the database.
  */
+
 export const postIncludio = {
     async post(hotelData: HotelDetails): Promise<HotelDetails> {
         try {

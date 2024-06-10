@@ -1,14 +1,20 @@
 // src/scheduler.ts
 import cron from 'node-cron';
 import { ScraperService } from '../../service';
+import { includioConfig } from '../../DAO/additionalDataConfig';
 
 
 /**
  * Scrapes hotel data from the Includio service at specified times and saves it to the database.
  */
+/**
+ * Runs a scraping job at specified times using cron scheduling.
+ * Scrapes data from the service, fills additional details, and saves the data to the database.
+ */
+
 const includio = () => {
 
-    const times = ['0 5 * * *', '0 18 * * *'];
+    const times = ['0 15 * * *', '0 20 * * *'];
 
     times.forEach(time => {
         cron.schedule(time, async () => {
@@ -21,18 +27,13 @@ const includio = () => {
                 // Fill additional details as needed
                 const hotelData = {
                 ...scrapedHotelData,
-                name:"Includio",
-                stars: "4",
-                roomTypes: ["DOPPELZIMMER COMFORT PLUS", "DOPPELZIMMER COMFORT TYP A", "DOPPELZIMMER COMFORT TYP B","FAMILIENZIMMER",],
-                breakfastIncluded: true
+                ...includioConfig
                 };
-
-                console.log("Automated Hotel-Details", hotelData);
 
                 // Save to database via the service
                 const savedHotel = await ScraperService.postIncludio.post(hotelData);
 
-                console.log(`Hotel data saved: ${savedHotel}`);
+                console.log(`Hotel data saved: ${savedHotel.pricePerNight}`);
             } catch (error) {
                 const typedError = error as Error;
                 console.error('Fehler beim automatisierten Scrapen der Website:', typedError);

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
-import { CompanyDocument, CompanyModel } from "./intefaces/companyInter"; // assuming the interfaces file is named "interfaces.ts"
+import { CompanyDocument, CompanyModel } from "../intefaces/companyInter"; // assuming the interfaces file is named "interfaces.ts"
 
 // Definiere das Interface für Settings
 const companySchema = new Schema<CompanyDocument, CompanyModel>(

@@ -8,6 +8,7 @@ import { utils } from './utils/index';
  * Scrapes hotel data from a website and returns the details.
  * @returns A promise that resolves to an object containing the hotel details.
  */
+
 export const getIncludio = {
     scrapeAndReturn: async (): Promise<HotelDetails> => {
         const url = utils.generateUrl();

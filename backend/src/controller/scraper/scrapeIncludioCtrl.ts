@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ScraperService } from '../../service/index';
+import { includioConfig } from '../../DAO/additionalDataConfig';
 
 /**
  * Controller function to scrape data from the Includio service and save it to the database.
@@ -7,6 +8,7 @@ import { ScraperService } from '../../service/index';
  * @param {Response} res - The Express response object.
  * @returns {Promise<void>} - A Promise that resolves when the scraping and saving is complete.
  */
+
 export const scrapeIncludioCtrl = {
     async scrape(_:Request, res: Response) {
         try {
@@ -16,10 +18,7 @@ export const scrapeIncludioCtrl = {
             // Fill additional details as needed
             const hotelData = {
                 ...scrapedHotelData,
-                name:"Includio",
-                stars: "4",
-                roomTypes: ["DOPPELZIMMER COMFORT PLUS", "Room DOPPELZIMMER COMFORT TYP A", "DOPPELZIMMER COMFORT TYP B","FAMILIENZIMMER",],
-                breakfastIncluded: true
+                ...includioConfig
             };
 
             console.log("Hotel-Details", scrapedHotelData);

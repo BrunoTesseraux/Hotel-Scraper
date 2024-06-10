@@ -1,4 +1,4 @@
-import User from "../../models/User.js";
+import User from "../../DAO/models/User.js";
 // import { sendVerificationEmail } from "../../utils/verificationEmail.js";
 
 interface RegisterUserParams {

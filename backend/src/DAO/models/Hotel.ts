@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Hotel } from './intefaces/companyInter';
+import { Hotel } from '../intefaces/companyInter';
 
 
 // Mongoose Schema Definition
