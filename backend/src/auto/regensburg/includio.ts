@@ -9,12 +9,12 @@ import { includioConfig } from '../../DAO/additionalDataConfig';
 
 const includio = () => {
     // Definieren der Zeiten, zu denen der Scraping-Job ausgeführt werden soll
-    const times = ['0 5 * * *', '0 17 * * *'];
+    const times = ['0 5 * * *', '28 19 * * *'];
     // Maximale Anzahl der Versuche, um eine Endlosschleife zu vermeiden
     const maxAttempts = 5;
 
     // Funktion, die den Scraper ausführt und die Daten speichert
-    const retryScrapeAndSave = async (): Promise<any> => {
+    const retryScrapeAndSave = async (): Promise<void> => {
         // Schleife für die Anzahl der Versuche
         for (let attempt = 1; attempt <= maxAttempts; attempt++) {
             try {
@@ -43,6 +43,8 @@ const includio = () => {
 
                 console.log('Saved hotel data:', savedHotel);
                 // Erfolgreiches Ende der Funktion, wenn die Daten gespeichert wurden
+                return; // Aus der Schleife und Funktion austreten
+
             } catch (error) {
                 // Fehlerbehandlung und Loggen des Fehlers
                 console.error(`Attempt ${attempt} failed:`, error);
