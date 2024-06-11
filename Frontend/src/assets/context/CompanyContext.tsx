@@ -113,7 +113,15 @@ const exampleUser: Company = {
       ["Lakeside Lodge", "#FF5733"],
       ["Mountain Retreat", "#33FF57"],
       ["Beachside Inn", "#3375FF"],
-      ["City Center Hotel", "#FF33A5"]
+      ["City Center Hotel", "#FF33A5"],
+      ["Riverside Resort", "#FF5733"],
+      ["Forest Cabin", "#33FF57"],
+      ["Luxury Villa", "#3375FF"],
+      ["Seaside Resort", "#FF33A5"],
+      ["Historic Inn", "#FF5733"],
+      ["Ski Chalet", "#33FF57"],
+      ["Desert Oasis", "#3375FF"],
+      ["Mountain Lodge", "#FF33A5"]
     ]),
     viewInDashboard: "overview"
   },
